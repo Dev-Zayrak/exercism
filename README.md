@@ -11,7 +11,7 @@ Ce projet a pour but de suivre ma progression, d'améliorer mes compétences en 
 
 avoir [node.js](https://nodejs.org/en/download/) installer sur votre machine
 
-Ensuite dans le terminal ..\exercism\javascript\ *nom de l'exercice*
+Ensuite dans le terminal ..\exercism\javascript\\*nom de l'exercice*
 
 installer les dependances :
 ```
