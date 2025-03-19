@@ -32,7 +32,7 @@ corepack pnpm test
 
 avoir [ruby](https://www.ruby-lang.org/en/documentation/installation/) installer sur votre machine
 
-Ensuite dans le terminal ..\exercism\ruby\ *nom de l'exercice*
+Ensuite dans le terminal ..\exercism\ruby\\*nom de l'exercice*
 
 installer la gemme :
 ```
