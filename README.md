@@ -53,13 +53,13 @@ Installer [COMPOSER](https://getcomposer.org/) un gestionnaire de dependance pou
 Ensuite dans le terminal ..\exercism\php\\*nom de l'exercice*
 
 Installer le framework de tests unitaires [PHPUnit](https://phar.phpunit.de/)
->> pour une installation globale sur la machine et ne pas avoir a l'installer sur chaque projet :
-> creer un dossier C:\phpunit
-> creer un fichier phpunit.bat qui contient :
+-> pour une installation globale sur la machine et ne pas avoir a l'installer sur chaque projet :
+-> creer un dossier C:\phpunit
+-> creer un fichier phpunit.bat qui contient :
 @echo off
 php C:\phpunit\phpunit.phar %*
-> Renommer le fichier telecharger phpunit.phar
-> Ajouter C:\phpunit dans PATH des variables d'environnement systeme
+-> Renommer le fichier telecharger phpunit.phar
+-> Ajouter C:\phpunit dans PATH des variables d'environnement systeme
 
 Cela permettra de lancer les tests avec la commande
 ```
