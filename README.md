@@ -54,7 +54,7 @@ Ensuite dans le terminal ..\exercism\php\\*nom de l'exercice*
 
 Installer le framework de tests unitaires [PHPUnit](https://phar.phpunit.de/)
 
--> pour une installation globale sur la machine et ne pas avoir a l'installer sur chaque projet :
+→ pour une installation globale sur la machine et ne pas avoir a l'installer sur chaque projet :
 - creer un dossier C:\phpunit
 - creer un fichier phpunit.bat qui contient :
 ```batch
