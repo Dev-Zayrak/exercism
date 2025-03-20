@@ -43,3 +43,25 @@ lancer les tests en remplacant *<snake_case_exercise>* par le nom de l'exercice 
 ```
 ruby <snake_case_exercise>_test.rb
 ```
+
+## Instructions pour tester les exercices PHP :
+
+avoir [PHP](https://www.php.net/downloads.php) installer sur votre machine
+
+Installer [COMPOSER](https://getcomposer.org/) un gestionnaire de dependance pour PHP
+
+Ensuite dans le terminal ..\exercism\php\\*nom de l'exercice*
+
+Installer le framework de tests unitaires [PHPUnit](https://phar.phpunit.de/)
+>> pour une installation globale sur la machine et ne pas avoir a l'installer sur chaque projet :
+> creer un dossier C:\phpunit
+> creer un fichier phpunit.bat qui contient :
+@echo off
+php C:\phpunit\phpunit.phar %*
+> Renommer le fichier telecharger phpunit.phar
+> Ajouter C:\phpunit dans PATH des variables d'environnement systeme
+
+Cela permettra de lancer les tests avec la commande
+```
+phpunit HelloWorldTest.php
+```
