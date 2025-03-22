@@ -3,19 +3,9 @@
 // convenience to get you started writing code faster.
 //
 
-export const findAnagrams = (word, array) => {
+export const findAnagrams = (target, array) => {
 
-  const words = word.toLowerCase().split('').sort().join('');
+  const targets = target.toLowerCase().split('').sort().join('');
  
-  for(let i = 0; i<array.length; i++){    
-    let wordFromArray = array[i].toLowerCase().split('').sort().join('');
-
-    if(array[i].toLowerCase() === word.toLowerCase() ||
-      wordFromArray !== words
-    ){
-      array.splice(i, 1);
-      i--;
-    }
-  }
-  return array
+  return array.filter(word => word.toLowerCase() !== target.toLowerCase() && word.toLowerCase().split('').sort().join('') === targets)
 };
