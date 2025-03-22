@@ -25,10 +25,10 @@ export class Character {
   }
 
   static rollAbility() {
-    let numbers = Array.from({ length: 4 }, () => Math.ceil(Math.random() * 6));
-    numbers = numbers.sort(function (a, b) {return a - b;});
-    numbers.shift();
-    return numbers.reduce((accumulator, currentValue) => accumulator + currentValue);
+    return Array.from({ length: 4 }, () => Math.ceil(Math.random() * 6))
+    .sort((a, b) => a - b)
+    .slice(1)
+    .reduce((accumulator, currentValue) => accumulator + currentValue);
   }
   
   get strength() {
