@@ -30,3 +30,27 @@ export const transpose = input => {
   }
   return output
 };
+
+
+
+/* 
+
+Meilleure solution trouver sur le site :
+
+
+const getMaxLength = input => input.reduce((maxLength, { length }) => Math.max(maxLength, length), 0)
+
+
+export const transpose = input => Array.from(Array(getMaxLength(input)),
+  (_, i) => input.reduce((transposedText, text, j) =>
+    transposedText + (text[i]?.padStart(j - transposedText.length + 1, ' ') || ''), '')
+);
+
+
+explication :
+
+> Array() permet de creer un array avec une taille predefinie
+> Array.from permet de remplir le tableau creer par Array() en appliquant la fonction .reduce a chaque indice
+> .reduce permet de parcoucrir le tableau 'input'
+> .padStart permet de rajouter des espaces devant le string si text[i] est defini pour pour aligner les caractères de manière correcte
+*/
