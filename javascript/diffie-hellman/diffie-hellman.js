@@ -5,11 +5,6 @@
 
 export class DiffieHellman {
   constructor(p, g) {
-
-    if(p <= 0  || p >= 9999 || g <= 0  || g >= 9999){
-      throw new Error('constructor arguments are out of range');
-    }
-
     if(!this.isPrime(p) || !this.isPrime(g)){
       throw new Error('constructor arguments are not prime');
     }
