@@ -6,20 +6,15 @@
 export const encode = (cipherText, rails) => {
 
   let converts = Array.from({length: rails}, () => ['']);
-  let sens = 'monter'
+  let pos = 0, step = 1
 
-  for(let i = 0, y = 0; i<cipherText.length; i++){
+  for(let i = 0; i<cipherText.length; i++){
     
-    converts[y][0] += cipherText.charAt(i)
+    converts[pos][0] += cipherText.charAt(i)
 
-    if(sens === 'monter') {
-      y++
-      if(y === rails-1) sens = 'descendre'
-    }
-    else if(sens === 'descendre'){
-      y--
-      if(y === 0) sens = 'monter'
-    }
+    if(pos === 0) step = 1
+    else if(pos === rails-1) step = -1
+    pos += step
   }
   return converts.flat(rails).join('').toString()
 };
@@ -56,7 +51,7 @@ export const decode = (cipherText, rails) => {
       if (pos === 0) step = 1;
       else if (pos === rails - 1) step = -1;
       pos += step;
+      
   }
-  
   return result;
 };
