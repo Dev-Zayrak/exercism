@@ -3,16 +3,6 @@
 // convenience to get you started writing code faster.
 //
 
-const alphabet = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'
-const getNewLetter = (str, int) => alphabet.indexOf(str) >= 0 ? alphabet[alphabet.indexOf(str) + int] : str
+const alphabet = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'  
 
-export const rotate = (cipherText, rot) => {
-  
-  if(rot === 0 || rot === 26) return cipherText
-
-  let output = ''
-  for(let i = 0; i < cipherText.length; i++){
-    output += getNewLetter(cipherText.charAt(i), rot)
-  }
-  return output
-};
+export const rotate = (cipherText, rot) => [...cipherText].reduce( (acc, char) => acc + (alphabet.indexOf(char) >= 0 ? alphabet[alphabet.indexOf(char) + rot] : char), '' )
