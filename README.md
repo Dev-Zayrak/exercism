@@ -8,9 +8,9 @@ Ce projet a pour but de suivre ma progression, d'améliorer mes compétences en 
 
 
 
-🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
 ## Instructions pour tester les exercices JavaScript :
-🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+
 avoir [node.js](https://nodejs.org/en/download/) installer sur votre machine
 
 Ensuite dans le terminal ..\exercism\javascript\\*nom de l'exercice*
@@ -32,9 +32,9 @@ corepack pnpm test
 
 
 
-🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
 ## Instructions pour tester les exercices Ruby :
-🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+
 avoir [ruby](https://www.ruby-lang.org/en/documentation/installation/) installer sur votre machine
 
 Ensuite dans le terminal ..\exercism\ruby\\*nom de l'exercice*
@@ -51,9 +51,9 @@ ruby <snake_case_exercise>_test.rb
 
 
 
-🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
 ## Instructions pour tester les exercices PHP :
-🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+
 avoir [PHP](https://www.php.net/downloads.php) installer sur votre machine
 
 Installer [COMPOSER](https://getcomposer.org/) un gestionnaire de dependance pour PHP
