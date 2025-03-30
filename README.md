@@ -8,8 +8,7 @@ Ce projet a pour but de suivre ma progression, d'améliorer mes compétences en 
 
 
 
-🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
-## Instructions pour tester les exercices JavaScript :
+## 🔷🔷🔷 Instructions pour tester les exercices JavaScript : 🔷🔷🔷
 
 avoir [node.js](https://nodejs.org/en/download/) installer sur votre machine
 
@@ -32,8 +31,8 @@ corepack pnpm test
 
 
 
-🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
-## Instructions pour tester les exercices Ruby :
+
+## 🔷🔷🔷 Instructions pour tester les exercices Ruby :
 
 avoir [ruby](https://www.ruby-lang.org/en/documentation/installation/) installer sur votre machine
 
@@ -51,8 +50,8 @@ ruby <snake_case_exercise>_test.rb
 
 
 
-🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
-## Instructions pour tester les exercices PHP :
+
+## 🔷🔷🔷Instructions pour tester les exercices PHP :
 
 avoir [PHP](https://www.php.net/downloads.php) installer sur votre machine
 
