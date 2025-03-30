@@ -3,7 +3,7 @@
 // convenience to get you started writing code faster.
 //
 
-const proteins = new Map(Object.entries({
+const proteins = {
   'AUG': 'Methionine',
   'UUU': 'Phenylalanine',
   'UUC': 'Phenylalanine',
@@ -21,7 +21,7 @@ const proteins = new Map(Object.entries({
   'UAA': 'STOP',
   'UAG': 'STOP',
   'UGA': 'STOP'
-}));
+}
 
 export const translate = (sequence) => {
   
@@ -32,9 +32,9 @@ export const translate = (sequence) => {
 
   for(let i = 0; i<sequences.length; i++){
     let character = sequences[i]
-    if(!proteins.get(character)) throw new Error('Invalid codon')
-    else if(proteins.get(character) === 'STOP') return output
-    else output.push(proteins.get(character))
+    if(!proteins[character]) throw new Error('Invalid codon')
+    else if(proteins[character] === 'STOP') return output
+    else output.push(proteins[character])
   }
   return output
 };
