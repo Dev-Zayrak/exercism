@@ -6,7 +6,8 @@ Chaque dossier correspond à un langage de programmation et regroupe mes résolu
 
 Ce projet a pour but de suivre ma progression, d'améliorer mes compétences en développement et de partager mes solutions avec la communauté. 🚀
 
-
+<br>
+<br>
 
 ## <p align="center">  🟩 Instructions pour tester les exercices JavaScript 🟩 </p>
 
@@ -29,8 +30,8 @@ lancer les tests :
 corepack pnpm test
 ```
 
-
-
+<br>
+<br>
 
 ## <p align="center"> 🟩 Instructions pour tester les exercices Ruby 🟩 </p>
 
@@ -48,8 +49,8 @@ lancer les tests en remplacant *<snake_case_exercise>* par le nom de l'exercice 
 ruby <snake_case_exercise>_test.rb
 ```
 
-
-
+<br>
+<br>
 
 ## <p align="center"> 🟩Instructions pour tester les exercices PHP 🟩 </p>
 
