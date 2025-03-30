@@ -7,8 +7,10 @@ Chaque dossier correspond à un langage de programmation et regroupe mes résolu
 Ce projet a pour but de suivre ma progression, d'améliorer mes compétences en développement et de partager mes solutions avec la communauté. 🚀
 
 
-## Instructions pour tester les exercices JavaScript :
 
+🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+## Instructions pour tester les exercices JavaScript :
+🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
 avoir [node.js](https://nodejs.org/en/download/) installer sur votre machine
 
 Ensuite dans le terminal ..\exercism\javascript\\*nom de l'exercice*
@@ -28,8 +30,11 @@ lancer les tests :
 corepack pnpm test
 ```
 
-## Instructions pour tester les exercices Ruby :
 
+
+🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+## Instructions pour tester les exercices Ruby :
+🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
 avoir [ruby](https://www.ruby-lang.org/en/documentation/installation/) installer sur votre machine
 
 Ensuite dans le terminal ..\exercism\ruby\\*nom de l'exercice*
@@ -44,8 +49,11 @@ lancer les tests en remplacant *<snake_case_exercise>* par le nom de l'exercice 
 ruby <snake_case_exercise>_test.rb
 ```
 
-## Instructions pour tester les exercices PHP :
 
+
+🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+## Instructions pour tester les exercices PHP :
+🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
 avoir [PHP](https://www.php.net/downloads.php) installer sur votre machine
 
 Installer [COMPOSER](https://getcomposer.org/) un gestionnaire de dependance pour PHP
