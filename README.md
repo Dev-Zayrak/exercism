@@ -1,4 +1,4 @@
-# 💡 Exercism Solutions 💡
+# <p align="center">💡 Exercism Solutions 💡 </p>
 
 Ce repository contient mes solutions aux exercices réalisés sur [Exercism](https://exercism.org). 💪
 
@@ -8,7 +8,7 @@ Ce projet a pour but de suivre ma progression, d'améliorer mes compétences en 
 
 
 
-## <p align="center">  🟩 Instructions pour tester les exercices JavaScript : 🟩 </p>
+## <p align="center">  🟩 Instructions pour tester les exercices JavaScript 🟩 </p>
 
 avoir [node.js](https://nodejs.org/en/download/) installer sur votre machine
 
@@ -32,7 +32,7 @@ corepack pnpm test
 
 
 
-## 🟩🟩 Instructions pour tester les exercices Ruby : 🟩🟩
+## <p align="center"> 🟩 Instructions pour tester les exercices Ruby 🟩 </p>
 
 avoir [ruby](https://www.ruby-lang.org/en/documentation/installation/) installer sur votre machine
 
@@ -51,7 +51,7 @@ ruby <snake_case_exercise>_test.rb
 
 
 
-## 🟩🟩🟩Instructions pour tester les exercices PHP : 🟩🟩🟩
+## <p align="center"> 🟩Instructions pour tester les exercices PHP 🟩 </p>
 
 avoir [PHP](https://www.php.net/downloads.php) installer sur votre machine
 
