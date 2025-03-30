@@ -8,7 +8,7 @@ Ce projet a pour but de suivre ma progression, d'améliorer mes compétences en 
 
 
 
-<p align="center"> ## 🟩 Instructions pour tester les exercices JavaScript : 🟩 </p>
+## <p align="center">  🟩 Instructions pour tester les exercices JavaScript : 🟩 </p>
 
 avoir [node.js](https://nodejs.org/en/download/) installer sur votre machine
 
