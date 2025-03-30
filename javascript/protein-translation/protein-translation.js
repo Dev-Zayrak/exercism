@@ -23,44 +23,18 @@ const proteins = new Map(Object.entries({
   'UGA': 'STOP'
 }));
 
-
-
-//const getProteins = arr => arr.reduce((acc, value) => acc + (proteins.get(value) !== 'STOP' ? proteins.get(value) : ''), '')
-
 export const translate = (sequence) => {
   
   if(sequence === undefined) return []
-  /*
-    decouper la sequence par bloc de 3 caracteres
-    comparer les blocs avec les cles de PROTEIN
-    if value = stop -> break
-    mettre la valeur dans un tableau.
-    retourner le tableau
-  */
-
     
-    
-    let sequences = sequence.match(/.{1,3}/g)
-    let output = []
+  let sequences = sequence.match(/.{1,3}/g)
+  let output = []
 
-    for(let i = 0; i<sequences.length; i++){
-
-      let character = sequences[i]
-      if(proteins.get(character) === undefined) throw new Error('Invalid codon')
-      else if(proteins.get(character) === 'STOP') break
-      else output.push(proteins.get(character))
-    }
-
-    //console.log(output)
-    return output
-
-    
-    
-
-    // export const rotate = (cipherText, rot) => [...cipherText].reduce( (acc, char) => acc + (alphabet.indexOf(char) >= 0 ? alphabet[alphabet.indexOf(char) + rot] : char), '' )
-
-
-
-    // export const rotate = (cipherText, rot) => cipherText.replace(/[a-zA-Z]/g, char => alphabet[alphabet.indexOf(char) + rot])
-
+  for(let i = 0; i<sequences.length; i++){
+    let character = sequences[i]
+    if(!proteins.get(character)) throw new Error('Invalid codon')
+    else if(proteins.get(character) === 'STOP') return output
+    else output.push(proteins.get(character))
+  }
+  return output
 };
