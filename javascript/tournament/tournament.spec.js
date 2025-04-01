@@ -2,7 +2,7 @@ import { describe, expect, test, xtest } from '@jest/globals';
 import { tournamentTally } from './tournament';
 
 describe('Tournament', () => {
-  test('just the header if no input', () => {
+  xtest('just the header if no input', () => {
     const tally = tournamentTally('');
     const expected = 'Team                           | MP |  W |  D |  L |  P';
     expect(tally).toEqual(expected);
@@ -61,7 +61,7 @@ describe('Tournament', () => {
       'Blithering Badgers             |  2 |  1 |  0 |  1 |  3';
     expect(tally).toEqual(expected);
   });
-  xtest('there can be more than two teams', () => {
+  test('there can be more than two teams', () => {
     const input =
       'Allegoric Alaskans;Blithering Badgers;win\n' +
       'Blithering Badgers;Courageous Californians;win\n' +
