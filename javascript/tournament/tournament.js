@@ -7,13 +7,13 @@ const header = 'Team                           | MP |  W |  D |  L |  P'
 
 class Team {
   constructor(name) {
-    this.name = name.padEnd(31),
-    this.MP = 0,
+    this.name = name,//.padEnd(31),
     this.W = 0,
     this.D = 0,
     this.L = 0,
+    this.MP = 0,
     this.P = 0,
-    this.printScore = `${this.name}|  ${this.MP} |  ${this.W} |  ${this.D} |  ${this.L} |  ${this.P}`
+    this.printScore = '${this.name}|  ${this.MP} |  ${this.W} |  ${this.D} |  ${this.L} |  ${this.P}'
   }
 }
 
@@ -25,35 +25,65 @@ export const tournamentTally = score => {
 
   // console.log(paragraph.replace("Ruth's", "my"));
 
-  let teams = score.replace(`\n`, '').split(';')
+  let teams = score.replaceAll(/\b(win|loss|draw|\n)\b/g, '').split(';')
+  teams.pop()
 
-  let scores = score.split(`\n`)
+  const teamsNames = new Set(teams)
+  //console.log(teams)
+
+  const uniqueTeams = [...teamsNames].map(name => new Team(name))
 
 
-  console.log(teams)
+  //console.log(uniqueTeams)
+  
 
+  const scores = score.replaceAll('\n', ';').split(';')
+  //console.log(scores)
 
-  const teamsName = new Set()
+  for(let i = 0; i<scores.length-2; i+=3){
 
-  for(let i = 0; i<scores.length; i++){
-    if(scores[i] === 'win' || scores[i] === 'loss' || scores[i] === 'draw') continue
-    teamsName.add(scores[i])
-    //console.log(scores[i])
+    // ne fonctionne pas car le nom dans l'objet contient des espaces a la fin
+
+    if(scores[i+2] === 'win'){
+      let winnerTeam =  uniqueTeams.find(team => team.name === scores[i])
+      //console.log(winnerTeam)
+      winnerTeam.W += 1
+      let looserTeam = uniqueTeams.find(team => team.name === scores[i+1])
+      looserTeam.L +=1
+    }
+
+    if(scores[i+2] === 'loss'){
+      let winnerTeam =  uniqueTeams.find(team => team.name === scores[i+1])
+      winnerTeam.W += 1
+      let looserTeam = uniqueTeams.find(team => team.name === scores[i])
+      looserTeam.L +=1
+    }
+
+    if(scores[i+2] === 'draw'){
+      let firstTeam =  uniqueTeams.find(team => team.name === scores[i])
+      firstTeam.D += 1
+      let secondTeam = uniqueTeams.find(team => team.name === scores[i+1])
+      secondTeam.D +=1
+    }
+    
   }
 
-  const setIter = teamsName.keys();
+  uniqueTeams.forEach(team => team.MP = team.W+team.D+team.L)
+  uniqueTeams.forEach(team => team.P = 3*team.W+team.D)
+  uniqueTeams.forEach(team => team.printScore = '\n'+`${team.name.padEnd(31)}|  ${team.MP} |  ${team.W} |  ${team.D} |  ${team.L} |  ${team.P}`)
+  //console.log('=========================')
+  //console.log(uniqueTeams)
 
-  //console.log(setIter.next().value); // "foo"
-  //console.log(setIter.next().value); // "bar"
-  //console.log(setIter.next().value); // "baz"
+  let output = "Team                           | MP |  W |  D |  L |  P"
+
+  //console.log(uniqueTeams)
+
+  uniqueTeams.forEach(team => output += team.printScore)
+
+  console.log(output)
+  return output
 
   /*
-
-  const set1 = new Set();
-
-set1.add(42);
-set1.add(42);
-set1.add(13);
 
   
   convertir le string en tableau

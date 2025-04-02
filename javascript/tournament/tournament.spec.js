@@ -2,12 +2,12 @@ import { describe, expect, test, xtest } from '@jest/globals';
 import { tournamentTally } from './tournament';
 
 describe('Tournament', () => {
-  xtest('just the header if no input', () => {
+  test('just the header if no input', () => {
     const tally = tournamentTally('');
     const expected = 'Team                           | MP |  W |  D |  L |  P';
     expect(tally).toEqual(expected);
   });
-  xtest('a win is three points, a loss is zero points', () => {
+  test('a win is three points, a loss is zero points', () => {
     const tally = tournamentTally('Allegoric Alaskans;Blithering Badgers;win');
     const expected =
       'Team                           | MP |  W |  D |  L |  P\n' +
@@ -15,7 +15,7 @@ describe('Tournament', () => {
       'Blithering Badgers             |  1 |  0 |  0 |  1 |  0';
     expect(tally).toEqual(expected);
   });
-  xtest('a win can also be expressed as a loss', () => {
+  test('a win can also be expressed as a loss', () => {
     const tally = tournamentTally('Blithering Badgers;Allegoric Alaskans;loss');
     const expected =
       'Team                           | MP |  W |  D |  L |  P\n' +
@@ -23,7 +23,7 @@ describe('Tournament', () => {
       'Blithering Badgers             |  1 |  0 |  0 |  1 |  0';
     expect(tally).toEqual(expected);
   });
-  xtest('a different team can win', () => {
+  test('a different team can win', () => {
     const tally = tournamentTally('Blithering Badgers;Allegoric Alaskans;win');
     const expected =
       'Team                           | MP |  W |  D |  L |  P\n' +
@@ -31,7 +31,7 @@ describe('Tournament', () => {
       'Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0';
     expect(tally).toEqual(expected);
   });
-  xtest('a draw is one point each', () => {
+  test('a draw is one point each', () => {
     const tally = tournamentTally('Allegoric Alaskans;Blithering Badgers;draw');
     const expected =
       'Team                           | MP |  W |  D |  L |  P\n' +
@@ -39,7 +39,7 @@ describe('Tournament', () => {
       'Blithering Badgers             |  1 |  0 |  1 |  0 |  1';
     expect(tally).toEqual(expected);
   });
-  xtest('there can be more than one match', () => {
+  test('there can be more than one match', () => {
     const input =
       'Allegoric Alaskans;Blithering Badgers;win\n' +
       'Allegoric Alaskans;Blithering Badgers;win';
@@ -50,7 +50,7 @@ describe('Tournament', () => {
       'Blithering Badgers             |  2 |  0 |  0 |  2 |  0';
     expect(tally).toEqual(expected);
   });
-  xtest('there can be more than one winner', () => {
+  test('there can be more than one winner', () => {
     const input =
       'Allegoric Alaskans;Blithering Badgers;loss\n' +
       'Allegoric Alaskans;Blithering Badgers;win';
@@ -74,7 +74,7 @@ describe('Tournament', () => {
       'Courageous Californians        |  2 |  0 |  0 |  2 |  0';
     expect(tally).toEqual(expected);
   });
-  xtest('typical input', () => {
+  test('typical input', () => {
     const input =
       'Allegoric Alaskans;Blithering Badgers;win\n' +
       'Devastating Donkeys;Courageous Californians;draw\n' +
@@ -91,7 +91,7 @@ describe('Tournament', () => {
       'Courageous Californians        |  3 |  0 |  1 |  2 |  1';
     expect(tally).toEqual(expected);
   });
-  xtest('incomplete competition (not all pairs have played)', () => {
+  test('incomplete competition (not all pairs have played)', () => {
     const input =
       'Allegoric Alaskans;Blithering Badgers;loss\n' +
       'Devastating Donkeys;Allegoric Alaskans;loss\n' +
@@ -106,7 +106,7 @@ describe('Tournament', () => {
       'Devastating Donkeys            |  1 |  0 |  0 |  1 |  0';
     expect(tally).toEqual(expected);
   });
-  xtest('ties broken alphabetically', () => {
+  test('ties broken alphabetically', () => {
     const input =
       'Courageous Californians;Devastating Donkeys;win\n' +
       'Allegoric Alaskans;Blithering Badgers;win\n' +
@@ -123,7 +123,7 @@ describe('Tournament', () => {
       'Devastating Donkeys            |  3 |  0 |  1 |  2 |  1';
     expect(tally).toEqual(expected);
   });
-  xtest('ensure points sorted numerically', () => {
+  test('ensure points sorted numerically', () => {
     const input =
       'Devastating Donkeys;Blithering Badgers;win\n' +
       'Devastating Donkeys;Blithering Badgers;win\n' +
