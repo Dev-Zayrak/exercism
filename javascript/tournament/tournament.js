@@ -28,24 +28,16 @@ export const tournamentTally = score => {
   for(let i = 0; i<scores.length-2; i+=3){
 
     if(scores[i+2] === 'win'){
-      let winnerTeam =  uniqueTeams.find(team => team.name === scores[i])
-      winnerTeam.W += 1
-      let looserTeam = uniqueTeams.find(team => team.name === scores[i+1])
-      looserTeam.L +=1
+      uniqueTeams.find(team => team.name === scores[i]).W += 1
+      uniqueTeams.find(team => team.name === scores[i+1]).L += 1
     }
-
     if(scores[i+2] === 'loss'){
-      let winnerTeam =  uniqueTeams.find(team => team.name === scores[i+1])
-      winnerTeam.W += 1
-      let looserTeam = uniqueTeams.find(team => team.name === scores[i])
-      looserTeam.L +=1
+      uniqueTeams.find(team => team.name === scores[i+1]).W += 1
+      uniqueTeams.find(team => team.name === scores[i]).L += 1
     }
-
     if(scores[i+2] === 'draw'){
-      let firstTeam =  uniqueTeams.find(team => team.name === scores[i])
-      firstTeam.D += 1
-      let secondTeam = uniqueTeams.find(team => team.name === scores[i+1])
-      secondTeam.D +=1
+      uniqueTeams.find(team => team.name === scores[i]).D += 1
+      uniqueTeams.find(team => team.name === scores[i+1]).D += 1
     }
   }
 
