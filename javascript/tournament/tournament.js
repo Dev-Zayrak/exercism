@@ -19,24 +19,31 @@ class Team {
 export const tournamentTally = score => {
 
   if(!score) return header
-
-  let teams = score.replaceAll(/\b(win|loss|draw|\n)\b/g, '').split(';')
-  teams.pop()
-  const uniqueTeams = [...new Set(teams)].map(name => new Team(name))
+  
   const scores = score.replaceAll('\n', ';').split(';')
+  const teamsNames = score.replaceAll(/\b(win|loss|draw|\n)\b/g, '').split(';').filter(Boolean)
+  const uniqueTeams = [...new Set(teamsNames)].map(name => new Team(name))
+  const teams = {}
+  for(const team of uniqueTeams){
+    teams[team.name] = team
+  }
 
   for(let i = 0; i<scores.length-2; i+=3){
-    if(scores[i+2] === 'win'){
-      uniqueTeams.find(team => team.name === scores[i]).W++
-      uniqueTeams.find(team => team.name === scores[i+1]).L++
+    const teamA = teams[scores[i]]
+    const teamB = teams[scores[i+1]]
+    const result = scores[i+2]
+
+    if(result === 'win'){
+      teamA.W++
+      teamB.L++
     }
-    if(scores[i+2] === 'loss'){
-      uniqueTeams.find(team => team.name === scores[i+1]).W++
-      uniqueTeams.find(team => team.name === scores[i]).L++
+    if(result === 'loss'){
+      teamA.L++
+      teamB.W++
     }
-    if(scores[i+2] === 'draw'){
-      uniqueTeams.find(team => team.name === scores[i]).D++
-      uniqueTeams.find(team => team.name === scores[i+1]).D++
+    if(result === 'draw'){
+      teamA.D++
+      teamB.D++
     }
   }
 
