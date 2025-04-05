@@ -26,7 +26,6 @@ export const tournamentTally = score => {
   const scores = score.replaceAll('\n', ';').split(';')
 
   for(let i = 0; i<scores.length-2; i+=3){
-
     if(scores[i+2] === 'win'){
       uniqueTeams.find(team => team.name === scores[i]).W += 1
       uniqueTeams.find(team => team.name === scores[i+1]).L += 1
