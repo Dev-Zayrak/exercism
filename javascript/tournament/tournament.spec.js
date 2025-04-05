@@ -137,4 +137,25 @@ describe('Tournament', () => {
       'Blithering Badgers             |  5 |  1 |  0 |  4 |  3';
     expect(tally).toEqual(expected);
   });
+  test('ensure one space in score if double digit', () =>{
+    const input = 
+    'Devastating Donkeys;Blithering Badgers;win\n' +
+    'Devastating Donkeys;Blithering Badgers;win\n' +
+    'Devastating Donkeys;Blithering Badgers;win\n' +
+    'Devastating Donkeys;Blithering Badgers;win\n' +
+    'Devastating Donkeys;Blithering Badgers;win\n' +
+    'Devastating Donkeys;Blithering Badgers;win\n' +
+    'Devastating Donkeys;Blithering Badgers;win\n' +
+    'Devastating Donkeys;Blithering Badgers;win\n' +
+    'Devastating Donkeys;Blithering Badgers;win\n' +
+    'Devastating Donkeys;Blithering Badgers;win\n' +
+    'Devastating Donkeys;Blithering Badgers;win\n' +
+    'Blithering Badgers;Devastating Donkeys;win';
+    const tally = tournamentTally(input);
+    const expected =
+    'Team                           | MP |  W |  D |  L |  P\n' +
+    'Devastating Donkeys            | 12 | 11 |  0 |  1 | 33\n' +
+    'Blithering Badgers             | 12 |  1 |  0 | 11 |  3';
+    expect(tally).toEqual(expected);
+  });
 });
