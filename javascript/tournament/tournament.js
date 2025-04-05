@@ -27,22 +27,24 @@ export const tournamentTally = score => {
 
   for(let i = 0; i<scores.length-2; i+=3){
     if(scores[i+2] === 'win'){
-      uniqueTeams.find(team => team.name === scores[i]).W += 1
-      uniqueTeams.find(team => team.name === scores[i+1]).L += 1
+      uniqueTeams.find(team => team.name === scores[i]).W++
+      uniqueTeams.find(team => team.name === scores[i+1]).L++
     }
     if(scores[i+2] === 'loss'){
-      uniqueTeams.find(team => team.name === scores[i+1]).W += 1
-      uniqueTeams.find(team => team.name === scores[i]).L += 1
+      uniqueTeams.find(team => team.name === scores[i+1]).W++
+      uniqueTeams.find(team => team.name === scores[i]).L++
     }
     if(scores[i+2] === 'draw'){
-      uniqueTeams.find(team => team.name === scores[i]).D += 1
-      uniqueTeams.find(team => team.name === scores[i+1]).D += 1
+      uniqueTeams.find(team => team.name === scores[i]).D++
+      uniqueTeams.find(team => team.name === scores[i+1]).D++
     }
   }
 
-  uniqueTeams.forEach(team => team.MP = team.W+team.D+team.L)
-  uniqueTeams.forEach(team => team.P = 3*team.W+team.D)
-  uniqueTeams.forEach(team => team.printScore = '\n'+`${team.name.padEnd(31)}|${team.MP.toString().padStart(3)} |${team.W.toString().padStart(3)} |${team.D.toString().padStart(3)} |${team.L.toString().padStart(3)} |${team.P.toString().padStart(3)}`)
+  uniqueTeams.forEach(team => {
+    team.MP = team.W+team.D+team.L
+    team.P = 3*team.W+team.D
+    team.printScore = '\n'+`${team.name.padEnd(31)}|${team.MP.toString().padStart(3)} |${team.W.toString().padStart(3)} |${team.D.toString().padStart(3)} |${team.L.toString().padStart(3)} |${team.P.toString().padStart(3)}`
+  })
 
   uniqueTeams.sort((teamA, teamB) => {
     if(teamB.P !== teamA.P) return teamB.P - teamA.P
@@ -50,7 +52,6 @@ export const tournamentTally = score => {
   })
   
   let output = header
-
   uniqueTeams.forEach(team => output += team.printScore)
 
   return output
