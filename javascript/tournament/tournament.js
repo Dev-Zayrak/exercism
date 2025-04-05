@@ -24,7 +24,7 @@ export const tournamentTally = score => {
   const teamsNames = score.replaceAll(/\b(win|loss|draw|\n)\b/g, '').split(';').filter(Boolean)
   const uniqueTeams = [...new Set(teamsNames)].map(name => new Team(name))
   const teams = {}
-  
+
   for(const team of uniqueTeams){
     teams[team.name] = team
   }
@@ -50,7 +50,7 @@ export const tournamentTally = score => {
   uniqueTeams.forEach(team => {
     team.MP = team.W+team.D+team.L
     team.P = 3*team.W+team.D
-    team.printScore = '\n'+`${team.name.padEnd(31)}|${team.MP.toString().padStart(3)} |${team.W.toString().padStart(3)} |${team.D.toString().padStart(3)} |${team.L.toString().padStart(3)} |${team.P.toString().padStart(3)}`
+    team.printScore = '\n'+`${team.name.padEnd(31)}|${String(team.MP).padStart(3)} |${String(team.W).padStart(3)} |${String(team.D).padStart(3)} |${String(team.L).padStart(3)} |${String(team.P).padStart(3)}`
   })
 
   uniqueTeams.sort((teamA, teamB) => {
