@@ -19,31 +19,31 @@ class Team {
 export const tournamentTally = score => {
 
   if(!score) return header
-  
+
   const scores = score.replaceAll('\n', ';').split(';')
   const teamsNames = score.replaceAll(/\b(win|loss|draw|\n)\b/g, '').split(';').filter(Boolean)
   const uniqueTeams = [...new Set(teamsNames)].map(name => new Team(name))
   const teams = {}
+  
   for(const team of uniqueTeams){
     teams[team.name] = team
   }
 
   for(let i = 0; i<scores.length-2; i+=3){
-    const teamA = teams[scores[i]]
-    const teamB = teams[scores[i+1]]
-    const result = scores[i+2]
-
-    if(result === 'win'){
-      teamA.W++
-      teamB.L++
-    }
-    if(result === 'loss'){
-      teamA.L++
-      teamB.W++
-    }
-    if(result === 'draw'){
-      teamA.D++
-      teamB.D++
+    const [teamA, teamB, result] = [teams[scores[i]], teams[scores[i+1]], scores[i+2]]
+    switch (result) {
+      case 'win':
+        teamA.W++
+        teamB.L++
+        break
+      case 'loss':
+        teamA.L++
+        teamB.W++
+        break
+      case 'draw':
+        teamA.D++
+        teamB.D++
+        break
     }
   }
 
