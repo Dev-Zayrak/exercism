@@ -28,6 +28,31 @@ export const encode = str => {
   return output
 };
 
-export const decode = () => {
-  throw new Error('Remove this statement and implement this function');
+export const decode = str => {
+
+  if(str === '') return ''
+
+  let output = ''
+  let count = ''
+
+  for(let i = 0; i<str.length; i++){
+
+    if(Number.isInteger(parseInt(str.charAt(i))) && Number.isInteger(parseInt(str.charAt(i+1)))){
+      count += str.charAt(i)
+      continue
+    }
+
+    if(Number.isInteger(parseInt(str.charAt(i))) && !Number.isInteger(parseInt(str.charAt(i+1)))){
+      count += str.charAt(i)
+      output += str.charAt(i+1).repeat(count)
+      count = ''
+      i++
+      continue
+    }
+
+    if(!Number.isInteger(parseInt(str.charAt(i)))){
+      output += str.charAt(i)
+    }
+  }
+  return output
 };

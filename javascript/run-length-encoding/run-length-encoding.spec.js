@@ -30,35 +30,39 @@ describe('run-length encode a string', () => {
 });
 
 describe('run-length decode a string', () => {
-  xtest('decode empty string', () => {
+  test('decode empty string', () => {
     expect(decode('')).toEqual('');
   });
 
-  xtest('decode string with single characters only', () => {
+  test('decode string with single characters only', () => {
     expect(decode('XYZ')).toEqual('XYZ');
   });
 
-  xtest('decode string with no single characters', () => {
+  test('decode string with no single characters', () => {
     expect(decode('2A3B4C')).toEqual('AABBBCCCC');
   });
 
-  xtest('decode string with single characters mixed with repeated characters', () => {
+  test('decode string with single characters mixed with repeated characters', () => {
     expect(decode('12WB12W3B24WB')).toEqual(
       'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB',
     );
   });
 
-  xtest('decode string with multiple whitespaces', () => {
+  test('decode string with multiple whitespaces', () => {
     expect(decode('2 hs2q q2w2 ')).toEqual('  hsqq qww  ');
   });
 
-  xtest('decode string with lowercase characters', () => {
+  test('decode string with lowercase characters', () => {
     expect(decode('2a3b4c')).toEqual('aabbbcccc');
+  });
+
+  test('decode string with 3 digit inside', () => {
+    expect(decode('abc111ed')).toEqual('abceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeed')
   });
 });
 
 describe('run-length encode and then decode', () => {
-  xtest('encode followed by decode gives original string', () => {
+  test('encode followed by decode gives original string', () => {
     expect(decode(encode('zzz ZZ  zZ'))).toEqual('zzz ZZ  zZ');
   });
 });
