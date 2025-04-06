@@ -6,25 +6,25 @@ describe('run-length encode a string', () => {
     expect(encode('')).toEqual('');
   });
 
-  xtest('single characters only are encoded without count', () => {
+  test('single characters only are encoded without count', () => {
     expect(encode('XYZ')).toEqual('XYZ');
   });
 
-  xtest('encode string with no single characters', () => {
+  test('encode string with no single characters', () => {
     expect(encode('AABBBCCCC')).toEqual('2A3B4C');
   });
 
-  xtest('encode string with single characters mixed with repeated characters', () => {
+  test('encode string with single characters mixed with repeated characters', () => {
     expect(
       encode('WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWB'),
     ).toEqual('12WB12W3B24WB');
   });
 
-  xtest('encode string with multiple whitespaces', () => {
+  test('encode string with multiple whitespaces', () => {
     expect(encode('  hsqq qww  ')).toEqual('2 hs2q q2w2 ');
   });
 
-  xtest('encode string with lowercase characters', () => {
+  test('encode string with lowercase characters', () => {
     expect(encode('aabbbcccc')).toEqual('2a3b4c');
   });
 });
