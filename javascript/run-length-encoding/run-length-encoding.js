@@ -3,6 +3,8 @@
 // convenience to get you started writing code faster.
 //
 
+
+
 export const encode = str => {
   
   if(str === '') return ''
@@ -28,31 +30,13 @@ export const encode = str => {
   return output
 };
 
+const convertToArray = str => str.match(/\d+|[^\d]/g).map(element => Number.isInteger(parseInt(element)) ? parseInt(element) : element)
+const convert = (arr, str) => {
+  arr.forEach((element, i, arr) => Number.isInteger(element) ? str += arr[i+1].repeat(element-1) : str += element);
+  return str
+}
+
 export const decode = str => {
-
   if(str === '') return ''
-
-  let output = ''
-  let count = ''
-
-  for(let i = 0; i<str.length; i++){
-
-    if(Number.isInteger(parseInt(str.charAt(i))) && Number.isInteger(parseInt(str.charAt(i+1)))){
-      count += str.charAt(i)
-      continue
-    }
-
-    if(Number.isInteger(parseInt(str.charAt(i))) && !Number.isInteger(parseInt(str.charAt(i+1)))){
-      count += str.charAt(i)
-      output += str.charAt(i+1).repeat(count)
-      count = ''
-      i++
-      continue
-    }
-
-    if(!Number.isInteger(parseInt(str.charAt(i)))){
-      output += str.charAt(i)
-    }
-  }
-  return output
+  return convert(convertToArray(str), '')
 };

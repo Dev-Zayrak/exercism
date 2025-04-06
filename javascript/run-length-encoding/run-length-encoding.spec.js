@@ -56,6 +56,10 @@ describe('run-length decode a string', () => {
     expect(decode('2a3b4c')).toEqual('aabbbcccc');
   });
 
+  test('decode string with space and 3 digit inside', () => {
+    expect(decode('ab2c 11defg')).toEqual('abcc dddddddddddefg')
+  })
+
   test('decode string with 3 digit inside', () => {
     expect(decode('abc111ed')).toEqual('abceeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeed')
   });
