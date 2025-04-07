@@ -14,3 +14,13 @@ export const decode = str => {
 
   return str.match(/\d+|[^\d]/g).map((element, i, arr) => Number.isInteger(parseInt(element)) ? arr[i+1].repeat(element-1) : element).join('')
 };
+
+
+/*
+  BETTER SOLUTION
+
+  export const encode = string => string.replace(/(.)\1+/g, ({ length }, char) => length + char);
+
+  export const decode = string => string.replace(/(\d+)(.)/g, (_, length, char) => char.repeat(length));
+
+*/
