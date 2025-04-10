@@ -3,6 +3,8 @@
 // convenience to get you started writing code faster.
 //
 
-export const isArmstrongNumber = () => {
-  throw new Error('Remove this statement and implement this function');
-};
+export const isArmstrongNumber = int  =>{
+
+  return Array.from(String(int)).reduce((acc, currentValue) => acc + (Number(currentValue) ** String(int).length),0) == int   
+
+} 
