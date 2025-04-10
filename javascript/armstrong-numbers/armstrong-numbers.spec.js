@@ -38,12 +38,12 @@ describe('Armstrong Numbers', () => {
     expect(isArmstrongNumber(9926314)).toEqual(false);
   });
 
-  xtest('Armstrong number containing seven zeroes', () => {
+  test('Armstrong number containing seven zeroes', () => {
     const bigInput = 186709961001538790100634132976990n;
     expect(isArmstrongNumber(bigInput)).toEqual(true);
   });
 
-  xtest('The largest and last Armstrong number', () => {
+  test('The largest and last Armstrong number', () => {
     const bigInput = 115132219018763992565095597973971522401n;
     expect(isArmstrongNumber(bigInput)).toEqual(true);
   });
