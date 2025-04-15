@@ -4,5 +4,15 @@
 //
 
 export const truncate = (input) => {
-  throw new Error('Remove this statement and implement this function');
+  let output = []
+
+  for(let i=0, y=0; i<input.length; i++, y++){
+
+    if(input.codePointAt(i) > 65535){
+      output[y] = input.charAt(i) + input.charAt(i+1)
+      i++
+    }else output[y]= input.charAt(i)
+  }
+
+  return output.slice(0,5).join("")
 };
