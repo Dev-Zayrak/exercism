@@ -4,33 +4,18 @@
 //
 
 export class GameOfLife {
-  constructor(matrix) {
+  constructor(matrix){
     this.matrix = matrix
   }
 
-  tick() {
-    
-    let output = this.matrix.map(row => row.slice());
-    
-    for(let i = 0; i< this.matrix.length; i++){
-      for(let y = 0; y<this.matrix[i].length; y++){
+  static around = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1,1]];
+  static countAlive = (arr, x, y) => GameOfLife.around.reduce((acc, [a, b]) => acc + (arr[x + a]?.[y + b] ?? 0), 0)
 
-        let topLeft = this.matrix[i-1] === undefined || this.matrix[i-1][y-1] === undefined ? 0 : this.matrix[i-1][y-1]
-        let topMid = this.matrix[i-1] === undefined || this.matrix[i-1][y] === undefined ? 0 : this.matrix[i-1][y]
-        let topRight = this.matrix[i-1] === undefined || this.matrix[i-1][y+1] === undefined ? 0 : this.matrix[i-1][y+1]
-        let left = this.matrix[i] === undefined  || this.matrix[i][y-1] === undefined ? 0 : this.matrix[i][y-1]
-        let right = this.matrix[i] === undefined || this.matrix[i][y+1] === undefined ? 0 : this.matrix[i][y+1]
-        let bottomLeft = this.matrix[i+1] === undefined || this.matrix[i+1][y-1] === undefined ? 0 : this.matrix[i+1][y-1]
-        let bottomMid = this.matrix[i+1] === undefined || this.matrix[i+1][y] === undefined ? 0 : this.matrix[i+1][y]
-        let bottomRight = this.matrix[i+1] === undefined || this.matrix[i+1][y+1] === undefined ? 0 : this.matrix[i+1][y+1]        
-
-        let countAlives = [topLeft, topMid, topRight, left, right, bottomLeft, bottomMid, bottomRight].filter(x => x === 1).length
-
-        countAlives === 3 ? output[i][y] = 1 : this.matrix[i][y] === 1 && countAlives === 2 ? output[i][y] = 1 : output[i][y] = 0  
-      }
-    }
-
-    this.matrix = output
+  tick(){
+    this.matrix = this.matrix.map((line, x) => line.map((cell, y) => {
+      const alive = GameOfLife.countAlive(this.matrix, x, y);
+      return alive === 3 ? 1 : alive === 2 && this.matrix[x][y] === 1 ? 1 : 0
+    }));
   }
 
   state() {
