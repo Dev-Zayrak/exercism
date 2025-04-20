@@ -18,13 +18,7 @@ export function twoSum(array1, array2) {
  * @returns {boolean} whether the number is a palindrome or not
  */
 export function luckyNumber(value) {
-  let data = String(value);
-  for(let i = 0; i<data.length; i++){
-    if(data[i] !== data[data.length-i-1]){
-      return false;
-    };
-  };
-  return true;
+  return String(value) === Array.from(String(value)).reverse().join('')
 }
 
 /**
