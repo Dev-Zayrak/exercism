@@ -4,7 +4,7 @@
 //
 
 export const age = (planet, ageInSeconds) => {
-  const time = {
+  const timeRatio = {
     'mercury': 0.2408467,
     'venus': 0.61519726,
     'earth': 1.0,
@@ -14,6 +14,7 @@ export const age = (planet, ageInSeconds) => {
     'uranus': 84.016846,
     'neptune': 164.79132,
   };
+  let ageInEarthYears = ageInSeconds / 31557600;
 
-  return Math.round(((ageInSeconds / 31557600) / time[planet])*100)/100;
+  return Number((ageInEarthYears / timeRatio[planet]).toFixed(2));
 };
