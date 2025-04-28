@@ -39,7 +39,7 @@ Size.prototype.resize = function(newWidth, newHeight){
  */
 export function Position(x = 0, y = 0){
     this.x = x;
-    this.y = y ;
+    this.y = y;
 }
 
 /**
@@ -75,10 +75,13 @@ export class ProgramWindow{
      * @param {Size} newSize 
      */
     resize(newSize){
-        newSize.height < 1 ? this.size.height = 1 : 
-        (this.position.y + newSize.height) <= this.screenSize.height ? this.size.height = newSize.height : this.size.height = (this.screenSize.height - this.position.y);
-        newSize.width < 1 ? this.size.width = 1 : 
-        (this.position.x + newSize.width) <= this.screenSize.width ? this.size.width = newSize.width : this.size.width = (this.screenSize.width - this.position.x);
+        const maxWidth = this.screenSize.width - this.position.x;
+        const maxHeight = this.screenSize.height - this.position.y;
+
+        const newWidth = Math.max(1, Math.min(newSize.width, maxWidth));
+        const newHeight = Math.max(1, Math.min(newSize.height, maxHeight));
+
+        this.size.resize(newWidth, newHeight);
     }
 
 
@@ -89,10 +92,13 @@ export class ProgramWindow{
      * @param {Position} newPosition 
      */
     move(newPosition){
-        newPosition.x < 0 ? this.position.x = 0 :
-        newPosition.x > (this.screenSize.width - this.size.width) ? this.position.x = (this.screenSize.width - this.size.width) : this.position.x = newPosition.x;
-        newPosition.y < 0 ? this.position.y = 0 :
-        newPosition.y > (this.screenSize.height - this.size.height) ? this.position.y = (this.screenSize.height - this.size.height) : this.position.y = newPosition.y;
+        const maxX = this.screenSize.width - this.size.width;
+        const maxY = this.screenSize.height - this.size.height;
+        
+        const newX = Math.max(0, Math.min(newPosition.x, maxX));
+        const newY = Math.max(0, Math.min(newPosition.y, maxY));
+
+        this.position.move(newX, newY);
     }
 }
 
