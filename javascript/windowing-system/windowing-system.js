@@ -109,9 +109,7 @@ export class ProgramWindow{
  * @returns = the ProgramWindow instance that was passed in after the changes were applied.
  */
 export function changeWindow(newProgramWindow){
-        const newSize = new Size(400, 300);
-        newProgramWindow.resize(newSize);
-        const newPosition = new Position(100, 150);
-        newProgramWindow.move(newPosition);
-        return newProgramWindow;
+    newProgramWindow.resize(new Size(400, 300));
+    newProgramWindow.move(new Position(100, 150));
+    return newProgramWindow;
 }
