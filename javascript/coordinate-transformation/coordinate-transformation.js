@@ -15,10 +15,7 @@
  *  translated coordinate pair in the form [x, y]
  */
 export function translate2d(dx, dy) {
-  function translator(x, y){
-    return [dx+x, dy+y];
-  }
-  return translator;
+  return (x, y) =>  [dx+x, dy+y];
 }
 
 /**
@@ -32,10 +29,7 @@ export function translate2d(dx, dy) {
  *  scaled coordinate pair in the form [x, y]
  */
 export function scale2d(sx, sy) {
-  function doubleScale(x, y){
-    return [sx*x, sy*y];
-  }
-  return doubleScale;
+  return (x, y) => [sx*x, sy*y];
 }
 
 /**
