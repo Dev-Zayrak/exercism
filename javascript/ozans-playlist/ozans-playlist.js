@@ -4,6 +4,8 @@
 // the @ts-check directive. It will give you helpful autocompletion when
 // implementing this exercise.
 
+import { platform } from "os";
+
 /**
  * Removes duplicate tracks from a playlist.
  *
@@ -45,4 +47,4 @@ export const deleteTrack = (playlist, track) => playlist.filter(song => song !==
  * @param {string[]} playlist
  * @returns {string[]} list of artists
  */
-export const listArtists = playlist => removeDuplicates(playlist.map(song => song.substring(song.indexOf('-')+2)));
+export const listArtists = playlist => removeDuplicates(playlist.map(song => song.split('- ')[1]));
