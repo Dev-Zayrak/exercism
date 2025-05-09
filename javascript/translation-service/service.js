@@ -1,4 +1,9 @@
 /// <reference path="./global.d.ts" />
+
+import { error } from "console";
+import { resolve } from "path";
+import { NotAvailable } from "./errors";
+
 // @ts-check
 //
 // The lines above enable type checking for this file. Various IDEs interpret
@@ -27,7 +32,14 @@ export class TranslationService {
    * @returns {Promise<string>}
    */
   free(text) {
-    throw new Error('Implement the free function');
+    return this.api.fetch(text)
+      .then(value => {
+        return value.translation;
+      })
+      .catch(error => {
+        throw error;
+      }
+    )
   }
 
   /**
@@ -41,7 +53,13 @@ export class TranslationService {
    * @returns {Promise<string[]>}
    */
   batch(texts) {
-    throw new Error('Implement the batch function');
+    if(texts.length === 0){
+      return Promise.reject(new BatchIsEmpty());
+    }
+
+    const promises = texts.map(text => this.free(text));
+
+    return Promise.all(promises);
   }
 
   /**
@@ -54,8 +72,22 @@ export class TranslationService {
    * @returns {Promise<void>}
    */
   request(text) {
-    throw new Error('Implement the request function');
-  }
+    const tryRequest = attemptsLeft => {
+      return new Promise((resolve, reject) => {
+        this.api.request(text, error => {
+          if (!error) {
+            resolve();
+          } else if (attemptsLeft < 2) {
+            reject(error);
+          } else {
+            tryRequest(attemptsLeft - 1).then(resolve).catch(reject);
+          }
+        });
+      });
+    };
+  
+    return tryRequest(3);
+  }  
 
   /**
    * Retrieves the translation for the given text
@@ -68,7 +100,38 @@ export class TranslationService {
    * @returns {Promise<string>}
    */
   premium(text, minimumQuality) {
-    throw new Error('Implement the premium function');
+    return this.api.fetch(text)
+      .then(value => {
+        if (value.quality < minimumQuality){
+          throw new QualityThresholdNotMet();
+        } else {
+          return value.translation;
+        }
+      })
+      .catch(error => {
+        if (error instanceof NotAvailable){
+          return new Promise((resolve,reject) => {
+            this.api.request(text, requestError => {
+              if (requestError) {
+                reject(requestError);
+              }
+              this.api.fetch(text)
+                .then(value => {
+                  if (value.quality < minimumQuality){
+                    reject(new QualityThresholdNotMet());
+                  } else {
+                    resolve(value.translation);
+                  }
+                })
+                .catch(reject);
+              }
+            )
+          })
+        }else {
+          throw error;
+        }
+      }
+    )  
   }
 }
 
