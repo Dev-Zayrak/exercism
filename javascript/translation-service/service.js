@@ -94,38 +94,16 @@ export class TranslationService {
    * @returns {Promise<string>}
    */
   premium(text, minimumQuality) {
-    return this.api.fetch(text)
+    return this.api.fetch(text) 
+      .catch(() => {
+        return this.request(text).then(() => this.api.fetch(text));
+      })
       .then(value => {
         if (value.quality < minimumQuality){
           throw new QualityThresholdNotMet();
-        } else {
-          return value.translation;
         }
-      })
-      .catch(error => {
-        if (error instanceof NotAvailable){
-          return new Promise((resolve,reject) => {
-            this.api.request(text, requestError => {
-              if (requestError) {
-                reject(requestError);
-              }
-              this.api.fetch(text)
-                .then(value => {
-                  if (value.quality < minimumQuality){
-                    reject(new QualityThresholdNotMet());
-                  } else {
-                    resolve(value.translation);
-                  }
-                })
-                .catch(reject);
-              }
-            )
-          })
-        }else {
-          throw error;
-        }
-      }
-    )  
+        return value.translation;
+      });
   }
 }
 
