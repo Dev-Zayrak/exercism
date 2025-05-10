@@ -72,22 +72,16 @@ export class TranslationService {
    * @returns {Promise<void>}
    */
   request(text) {
-    const tryRequest = attemptsLeft => {
-      return new Promise((resolve, reject) => {
-        this.api.request(text, error => {
-          if (!error) {
-            resolve();
-          } else if (attemptsLeft < 2) {
-            reject(error);
-          } else {
-            tryRequest(attemptsLeft - 1).then(resolve).catch(reject);
-          }
+      const tryRequest = () => {
+        return new Promise((resolve, reject) => {
+          this.api.request(text, error => error ? reject(error) : resolve());
         });
-      });
-    };
-  
-    return tryRequest(3);
-  }  
+      };
+    
+      return tryRequest()
+        .catch(() => tryRequest())
+        .catch(() => tryRequest());
+  } 
 
   /**
    * Retrieves the translation for the given text
