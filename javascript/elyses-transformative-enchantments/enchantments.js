@@ -49,9 +49,8 @@ export const sandwichTrick = deck => deck.toSpliced(deck.length/2, 0, deck[deck.
  *
  * @returns {number[]} deck with only 2s
  */
-export function twoIsSpecial(deck) {
-  return deck.filter(card => card === 2);
-}
+export const twoIsSpecial = deck => deck.filter(card => card === 2);
+
 
 /**
  * Returns a perfectly order deck from lowest to highest.
@@ -60,7 +59,7 @@ export function twoIsSpecial(deck) {
  *
  * @returns {number[]} ordered deck
  */
-export const perfectlyOrdered = deck => deck.sort((num1, num2) => {return num1 < num2 ? -1 : 1});
+export const perfectlyOrdered = deck => deck.sort((num1, num2) =>  num1 < num2 ? -1 : 1);
 
 
 /**
