@@ -11,19 +11,17 @@
  * @returns {number} the price of the pizza
  */
 export function pizzaPrice(pizza, ...extras) {
-  let totalCost = 0;
-
-  switch (pizza) {
-    case 'Margherita': totalCost += 7;
-      break;
-    case 'Caprese' : totalCost += 9;
-      break;
-    case 'Formaggio' : totalCost += 10;
-  };
-
-  extras.forEach(element => element === 'ExtraSauce' ? totalCost+= 1 : totalCost+= 2);
   
-  return totalCost;
+  const price = {
+    "Margherita": 7,
+    "Caprese": 9,
+    "Formaggio": 10,
+    "ExtraSauce": 1,
+    "ExtraToppings": 2
+  }
+
+  // @ts-ignore
+  return extras.length > 0 ? price[pizza] + pizzaPrice(...extras) : price[pizza];
 }
 
 /**
