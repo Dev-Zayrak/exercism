@@ -20,19 +20,13 @@ export class HighScores {
     if (this.playerScores.length === 0){
       return 0;
     }
-    let best = this.playerScores[0];
-    this.playerScores.forEach(score => {
-      if (score > best){
-        best = score;
-      }
-    });
-    return best;
+    return Math.max(...this.playerScores);
   }
 
   get personalTopThree() {
     /*
     Option 1 – Less optimized for very high scores.
-    
+
     return this.playerScores.sort((a, b) => a < b ? 1 : -1).slice(0, 3);
     */
     
