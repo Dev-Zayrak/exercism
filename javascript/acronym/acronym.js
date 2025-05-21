@@ -3,4 +3,4 @@
 // convenience to get you started writing code faster.
 //
 
-export const parse = sentence =>  sentence.toUpperCase().split(/[\s-]/).reduce((acc, word) => word ? acc + word.match(/[A-Z]/) : acc, '');
+export const parse = sentence =>  sentence.toUpperCase().split(/[\s-]+/).reduce((acc, word) => acc + word.match(/[A-Z]/), '');
