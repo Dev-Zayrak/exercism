@@ -4,15 +4,19 @@
 //
 
 export class Matrix {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
+
+  #matrix;
+
+  constructor(input) {
+    this.#matrix = input.split('\n').map(element => element.split(' ').map(number => parseInt(number)));
   }
 
   get rows() {
-    throw new Error('Remove this statement and implement this function');
+   return this.#matrix;
   }
 
   get columns() {
-    throw new Error('Remove this statement and implement this function');
+    return Array.from(this.#matrix[0], (_, i) => this.#matrix.map(tableau => tableau[i]));
   }
+
 }
