@@ -10,9 +10,11 @@ export const compute = (dna1, dna2) => {
   }
 
 
+  //option 0
+  return [...dna1].reduce((acc, cv, index) => acc + (cv != dna2.charAt(index) ? 1 : 0) ,0)
 
   //option 1
-  return dna1.split('').reduce((acc, cv, index) => cv != dna2.charAt(index) ? acc+1 : acc ,0);
+  //return dna1.split('').reduce((acc, cv, index) => cv != dna2.charAt(index) ? acc+1 : acc ,0);
 
   //option 2
   //return dna1.split('').reduce((acc, _, index) => dna1.charAt(index) != dna2.charAt(index) ? acc+1 : acc ,0);
