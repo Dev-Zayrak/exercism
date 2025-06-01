@@ -9,15 +9,22 @@ export class Squares {
   #sumSquare;
   #squareSum;
 
-  //option 1
+  constructor(square) {
+    this.#square = square;
+    this.#sumSquare = this.#square * (this.#square+1) * (2*this.#square+1)/6;
+    this.#squareSum = (this.#square * (this.#square+1) /2) ** 2;
+  }
+
+  /*option 2
   constructor(square) {
     this.#square = square;
     this.#sumSquare = Array.from(Array(this.#square), (_, i) => i+1).reduce((acc, cv) => acc + cv**2);
     this.#squareSum = Array.from(Array(this.#square), (_, i) => i+1).reduce((acc, cv) => acc + cv) ** 2; 
   }
+  */
 
   /*
-  Option 2
+  Option 3
   constructor(square) {
     this.#square = square;
     this.#sumSquare = [...arrOfNumber(this.#square)].reduce((acc, cv) => acc + cv**2);
