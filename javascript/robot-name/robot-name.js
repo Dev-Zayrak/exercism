@@ -25,27 +25,18 @@ export class Robot {
     }
 }
 
-
-
 Robot.releaseNames = () => {
 
     if (Robot.NAMES_LIST.size === Robot.TOTAL_NUMBER_OF_NAMES){
-        throw new Error('No names avalaible');
+        throw new Error('No names available');
     }
-
-    let name = '';
-    for (let i = 0; i< 2; i++){
-        name += String.fromCharCode(Math.floor(Math.random() * (91 - 65) + 65));
-    }
-    for (let i = 0; i < 3; i++){
-        name += Math.floor(Math.random() * 10)
-    }
+    let name = ['A', 'A', '1', '1', '1'].map(
+        char => /[A-Z]/.test(char) ? String.fromCharCode(Math.floor(Math.random() * (91 - 65) + 65)) : Math.floor(Math.random() * 10)).join('');
 
     if (Robot.NAMES_LIST.has(name)){
         return Robot.releaseNames();
     }
-    else{
-        Robot.NAMES_LIST.add(name);
-        return name;
-    }
+    
+    Robot.NAMES_LIST.add(name);
+    return name; 
 };
