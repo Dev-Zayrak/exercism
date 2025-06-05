@@ -108,7 +108,7 @@ describe('Robot', () => {
   //
   // This test doesn't run on our online test runner because it will time-out
   // with most implementations. It's up to you to test your solution locally.
-  test.skip(
+  test(
     'all the names can be generated',
     () => {
       const usedNames = new Set();
