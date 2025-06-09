@@ -3,13 +3,26 @@
 // convenience to get you started writing code faster.
 //
 
+/*
+ * Importante rule :
+
+  Using core language features to build and deconstruct arrays via destructuring, 
+  and using the array literal [] are allowed, but no functions from the Array.prototype should be used.
+ */
+
 export class List {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
+
+  values;
+
+  constructor(items) {
+    this.values = items || [];
   }
 
-  append() {
-    throw new Error('Remove this statement and implement this function');
+  
+
+  append(list2) {
+    this.values = [...this.values, ...list2.values];
+    return this;
   }
 
   concat() {
