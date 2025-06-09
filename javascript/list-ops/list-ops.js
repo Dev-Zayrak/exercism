@@ -25,8 +25,17 @@ export class List {
     return this;
   }
 
-  concat() {
-    throw new Error('Remove this statement and implement this function');
+  concat(lists) {
+    const [first, ...rest] = [...lists.values];
+
+    if (first){
+      this.values = [...this.values, ...first.values];
+    }
+    if (rest[0] === undefined){
+      return this;
+    }
+
+    return this.concat(new List(rest));
   }
 
   filter() {
