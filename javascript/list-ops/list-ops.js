@@ -13,13 +13,13 @@
 export class List {
 
   values;
-  size = 0;
-  mapping = [];
+  #size = 0;
+  #mapping = [];
 
   constructor(items) {
     this.values = items || [];
-    this.size;
-    this.mapping;
+    this.#size;
+    this.#mapping;
   }
 
   
@@ -50,10 +50,10 @@ export class List {
     const [first, ...rest] = this.values;
 
     if (first){
-      this.mapping = [...this.mapping, callbackFunction(first)];
+      this.#mapping = [...this.#mapping, callbackFunction(first)];
     }
     if (rest[0] === undefined){
-      this.values = [...this.mapping];
+      this.values = [...this.#mapping];
       return this;
     }
     
@@ -63,11 +63,11 @@ export class List {
   }
 
   length() {
-    if (this.values[this.size]){
-      this.size++;
+    if (this.values[this.#size]){
+      this.#size++;
       return this.length(this.values);
     }
-    return this.size;
+    return this.#size;
 
   }
 
