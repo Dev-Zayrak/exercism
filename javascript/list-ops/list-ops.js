@@ -14,10 +14,12 @@ export class List {
 
   values;
   size = 0;
+  mapping = [];
 
   constructor(items) {
     this.values = items || [];
     this.size;
+    this.mapping;
   }
 
   
@@ -44,8 +46,20 @@ export class List {
     throw new Error('Remove this statement and implement this function');
   }
 
-  map() {
-    throw new Error('Remove this statement and implement this function');
+  map(callbackFunction) {
+    const [first, ...rest] = this.values;
+
+    if (first){
+      this.mapping = [...this.mapping, callbackFunction(first)];
+    }
+    if (rest[0] === undefined){
+      this.values = [...this.mapping];
+      return this;
+    }
+    
+    
+    this.values = rest;
+    return this.map(callbackFunction);
   }
 
   length() {
