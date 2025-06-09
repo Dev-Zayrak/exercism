@@ -13,9 +13,11 @@
 export class List {
 
   values;
+  size = 0;
 
   constructor(items) {
     this.values = items || [];
+    this.size;
   }
 
   
@@ -47,7 +49,12 @@ export class List {
   }
 
   length() {
-    throw new Error('Remove this statement and implement this function');
+    if (this.values[this.size]){
+      this.size++;
+      return this.length(this.values);
+    }
+    return this.size;
+
   }
 
   foldl() {

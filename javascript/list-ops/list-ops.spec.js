@@ -51,12 +51,12 @@ describe('filter list returning only values that satisfy the filter function', (
 });
 
 describe('returns the length of a list', () => {
-  xtest('empty list', () => {
+  test('empty list', () => {
     const list1 = new List();
     expect(list1.length()).toEqual(0);
   });
 
-  xtest('non-empty list', () => {
+  test('non-empty list', () => {
     const list1 = new List([1, 2, 3, 4]);
     expect(list1.length()).toEqual(4);
   });
