@@ -13,16 +13,19 @@
 export class List {
 
   values;
-  #size = 0;
-  #mapping = [];
+  #size;
+  #mapping;
+  #filter;
+  #reverse;
 
   constructor(items) {
     this.values = items || [];
-    this.#size;
-    this.#mapping;
+    this.#size = 0;
+    this.#mapping = [];
+    this.#filter = [];
+    this.#reverse = [];
   }
 
-  
 
   append(list2) {
     this.values = [...this.values, ...list2.values];
@@ -42,8 +45,19 @@ export class List {
     return this.concat(new List(rest));
   }
 
-  filter() {
-    throw new Error('Remove this statement and implement this function');
+  filter(callbackFunction) {
+    const [first, ...rest] = this.values;
+
+    if (callbackFunction(first)){
+      this.#filter = [...this.#filter, first];
+    }
+    if (rest[0] === undefined){
+      this.values = [...this.#filter];
+      return this;
+    }
+
+    this.values = rest;
+    return this.filter(callbackFunction);
   }
 
   map(callbackFunction) {
@@ -57,7 +71,6 @@ export class List {
       return this;
     }
     
-    
     this.values = rest;
     return this.map(callbackFunction);
   }
@@ -68,18 +81,52 @@ export class List {
       return this.length(this.values);
     }
     return this.#size;
-
   }
 
-  foldl() {
-    throw new Error('Remove this statement and implement this function');
+  foldl(callbackFunction, initialAcc) {
+    const [first, ...rest] = this.values;
+
+    if (first){
+      initialAcc = callbackFunction(initialAcc, first);
+    }
+    if (rest[0] === undefined){
+      return initialAcc;
+    }
+
+    this.values = rest;
+    return this.foldl(callbackFunction, initialAcc);
   }
 
-  foldr() {
-    throw new Error('Remove this statement and implement this function');
+  foldr(callbackFunction, initialAcc) {
+    // return this.reverse().foldl(callbackFunction, initialAcc); => Cheat ?
+
+    const [first, ...rest] = this.values;
+
+    if (first === undefined){
+      return initialAcc;
+    }
+    if (rest[0] === undefined){
+      return callbackFunction(initialAcc, first);
+    }
+    
+    this.values = rest;
+    const resultFromRecursion = this.foldr(callbackFunction, initialAcc);
+
+    return callbackFunction(resultFromRecursion, first);
   }
 
   reverse() {
-    throw new Error('Remove this statement and implement this function');
+    const [first, ...rest] = this.values;
+
+    if (first){
+      this.#reverse = [first, ...this.#reverse];
+    }
+    if (rest[0] === undefined){
+      this.values = [...this.#reverse];
+      return this;
+    }
+
+    this.values = rest;
+    return this.reverse();
   }
 }
