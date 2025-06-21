@@ -9,13 +9,16 @@ export const bestHands = (hands) => {
 
   let bests = [];
   let straightFlushs = [];
-  let indexStraightFlushs = [];
+
 
   const HANDS = hands.map(hand => hand.split(" ").sort((cardOne, cardTwo) => {
     let a = CARDVALUE.indexOf(cardOne.slice(0, -1));
     let b = CARDVALUE.indexOf(cardTwo.slice(0, -1));
     return a - b;
   }));
+
+  console.log('hands', hands)
+  console.log('HANDS', HANDS)
 
 
   // TEST ROYAL FLUSH
@@ -24,35 +27,31 @@ export const bestHands = (hands) => {
       bests.push(hands[HANDS.indexOf(hand)]);
     }
   }
-
   if (bests.length > 0) {
     return bests.flat();
   }
 
+
+
   // TEST STRAIGHT FLUSH
-  for (const hand of HANDS) {
-    if (isStraight(hand) && isFlush(hand)) {
-      straightFlushs.push(hand);
-      indexStraightFlushs.push(HANDS.indexOf(hand));
+  for (let i = 0; i < HANDS.length; i++) {
+    if (isStraight(HANDS[i]) && isFlush(HANDS[i])){
+      straightFlushs.push(HANDS[i]);
     }
   }
 
   if (straightFlushs.length === 1) {
-    return hands[HANDS.indexOf(straightFlushs[0])];
+    return [hands[HANDS.indexOf(straightFlushs[0])]];
   }
   if (straightFlushs.length > 1) {
-    // trier en fonction en la plus haute carte (la premiere)
-    // garder les mains les plus hautes identiques
-    console.log('plusieurs', straightFlushs)
     let topHands = straightFlushs
       .sort((handOne, handTwo) => handTwo[0].slice(0, -1) - handOne[0].slice(0, -1))
       .filter(hand => hand[0].slice(0, -1) === straightFlushs[0][0].slice(0, -1)
     );
-    console.log('topHands', topHands)
-    for (const index of topHands) {
-      bests.push(hands[topHands.indexOf(hand)]);
+
+    for (const hand of topHands) {
+      bests.push(hands[HANDS.indexOf(hand)]);
     }
-    console.log('bests.flat()', bests.flat())
     return bests.flat();
   }
 
